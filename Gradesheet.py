@@ -37,6 +37,9 @@ def calculate_gpa():
             "COMMUNICATION SYSTEM": 3,
             "PROBABILITY & STATISTICS": 3,
         },
+        "5":{
+            "PROJECT -II": 3,
+        },
     }
 
     total_credits = 0
