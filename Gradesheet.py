@@ -1,62 +1,138 @@
 def calculate_gpa():
     """Calculate GPA based on grades and credit hours."""
-    print("Enter your grades for the following subjects:")
 
-    subjects = {
-        "1": {
-            "MATHEMATICS - I": 3,
-            "ENGLISH FOR TECHNICAL COMMUNICATION": 4,
-            "PHYSICS": 3,
-            "COMPUTER PROGRAMMING": 3,
-            "FUNDAMENTAL OF COMPUTING TECHNOLOGY": 3,
-            "ENGINEERING DRAWING - I": 3,
-            "WORKSHOP TECHNOLOGY": 2,
+    branches = {
+        "Computer": {
+            "1": {
+                "MATHEMATICS - I": 3,
+                "ENGLISH FOR TECHNICAL COMMUNICATION": 4,
+                "PHYSICS": 3,
+                "COMPUTER PROGRAMMING": 3,
+                "FUNDAMENTAL OF COMPUTING TECHNOLOGY": 3,
+                "ENGINEERING DRAWING - I": 3,
+                "WORKSHOP TECHNOLOGY": 2,
+            },
+            "2": {
+                "MATHEMATICS - II": 3,
+                "CHEMISTRY": 3,
+                "APPLIED MECHANICS": 3,
+                "BASIC ELECTRICAL ENGINEERING": 3,
+                "DIGITAL LOGIC": 3,
+                "OBJECT ORIENTED PROGRAMMING WITH C++": 3,
+            },
+            "3": {
+                "MATHEMATICS - III": 3,
+                "DATA STRUCTURES AND ALGORITHM": 3,
+                "OBJECT ORIENTED ANALYSIS AND DESIGN": 3,
+                "COMPUTER GRAPHICS": 3,
+                "ELECTRONICS DEVICES AND CIRCUITS - I": 3,
+                "APPLIED SOCIOLOGY": 2,
+                "PROJECT-I": 3,
+            },
+            "4": {
+                "DATABASE MANAGEMENT SYSTEM": 3,
+                "PYTHON PROGRAMMING": 3,
+                "DISCRETE STRUCTURE": 3,
+                "MICROPROCESSOR": 3,
+                "COMMUNICATION SYSTEM": 3,
+                "PROBABILITY & STATISTICS": 3,
+            },
+            "5": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            },
+            "6": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            },
+            "7": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            },
+            "8": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            }
         },
-        "2": {
-            "MATHEMATICS - II": 3,
-            "CHEMISTRY": 3,
-            "APPLIED MECHANICS": 3,
-            "BASIC ELECTRICAL ENGINEERING": 3,
-            "DIGITAL LOGIC": 3,
-            "OBJECT ORIENTED PROGRAMMING WITH C++": 3,
-        },
-        "3": {
-            "MATHEMATICS - III": 3,
-            "DATA STRUCTURES AND ALGORITHM": 3,
-            "OBJECT ORIENTED ANALYSIS AND DESIGN": 3,
-            "COMPUTER GRAPHICS": 3,
-            "ELECTRONICS DEVICES AND CIRCUITS - I": 3,
-            "APPLIED SOCIOLOGY": 2,
-            "PROJECT-I": 3,
-        },
-        "4": {
-            "DATABASE MANAGEMENT SYSTEM": 3,
-            "PYTHON PROGRAMMING": 3,
-            "DISCRETE STRUCTURE": 3,
-            "MICROPROCESSOR": 3,
-            "COMMUNICATION SYSTEM": 3,
-            "PROBABILITY & STATISTICS": 3,
-        },
-        "5":{
-            "PROJECT -II": 3,
-        },
+
+        "Civil": {
+            "1": {
+                "MATHEMATICS - I": 3,
+                "CHEMISTRY": 3,
+                "APPLIED MECHANICS - I (STATICS)": 3,
+                "CIVIL ENGINEERING MATERIALS": 3,
+                "BASIC ELECTRICAL ENGINEERING": 2,
+                "ENGINEERING DRAWING - I": 3,
+                "WORKSHOP TECHNOLOGY": 2,
+            },
+            "2": {
+                "MATHEMATICS - II": 3,
+                "PHYSICS": 4,
+                "APPLIED MECHANICS - II(DYNAMICS)": 3,
+                "BUILDING TECHNOLOGY": 3,
+                "FUNDAMENTAL OF THERMO. & HEAT TRANSFER": 2,
+                "ENGINEERING DRAWING - II": 3,
+            },
+            "3": {
+                "MATHEMATICS-III": 3,
+                "STRENGTH OF MATERIALS": 3,
+                "FLUID MECHANICS": 3,
+                "SURVEY - I": 3,
+                "ENGINEERING GEOLOGY": 3,
+                "BASIC ELECTRONICS ENGINEERING": 2,
+                "COMPUTER PROGRAMMING": 3,
+            },
+            "4": {
+                "PROBABILITY & STATISTICS": 3,
+                "SURVAY - II": 3,
+                "HYDRAULICS": 3,
+                "THEORY OF STRUCTURE - I": 3,
+                "CONCRETE TECHNOLOGY & MASONRY STRCTURES": 3,
+                "CIVIL ENGINEERING DRAWING": 2,
+                "ENGLISH FOR TECHNICAL COMMUNICATION": 3,
+            },
+            "5": {
+                "SOIL MECHANIC": 3,
+                "SURVEY CAMP": 2,
+                "THEORY OF STRUCTURE - II": 3,
+                "WATER SUPPLY ENGINEERING": 3,
+                "TRNSPORTING ENGINEERING - I": 3,
+                "ENGINEERING HYDROLOGY": 3,
+                "DESIGN OF STEEL AND TIMBER STRUCTURE": 3,
+            },
+            "6": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            },
+            "7": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            },
+            "8": {
+                "": 3, "": 3, "": 3, "": 3, "": 3, "": 3, "": 3,
+            }
+        },      
     }
 
-    total_credits = 0
-    total_points = 0
-    f_count = 0
+    print("Enter 1 for Computer Engineering or 2 for Civil Engineering.")
+    branch_input = input("Enter your choice (1 or 2): ").strip()
+    if branch_input == "1":
+        branch = "Computer"
+    elif branch_input == "2":
+        branch = "Civil"
+    else:
+        print("Invalid choice. Please enter 1 or 2.")
+        return
 
-    semester = input("Enter semester (1 -- 4): ").strip()
-    if semester not in subjects:
-        print("Invalid semester entered. Please enter a number between 1 and 4.")
+    semester = input("Enter semester (1 -- 8): ").strip()
+    if semester not in branches[branch]:
+        print("Invalid semester entered. Please enter a number between 1 and 8.")
         return
 
     student_name = input("Enter the name of the student: ").strip().upper()
     file_name = student_name.split()[0].capitalize() if " " in student_name else student_name.capitalize()
 
-    subject_list = subjects[semester]
+    subject_list = branches[branch][semester]
     grades = {}
     failed = False  # Flag to check failure
+
+    total_credits = 0
+    total_points = 0
+    f_count = 0
 
     # Input grades for each subject
     for subject, credit in subject_list.items():
