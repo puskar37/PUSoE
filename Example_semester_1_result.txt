@@ -1,0 +1,22 @@
+                          PURBANCHAL UNIVERSITY
+                   Office of The Examination Management
+                            Biratnagar, Nepal
+
+                    Congratulations! You have Passed.
+                             Grade/Mark-Sheet
+Name: EXAMPLE
+
+S.N  Subjects                                 Credit Hour  Mark/Grade Obtained
+==============================================================================
+1    MATHEMATICS - I                          3            B+
+2    ENGLISH FOR TECHNICAL COMMUNICATION      4            A
+3    PHYSICS                                  3            B+
+4    COMPUTER PROGRAMMING                     3            A
+5    FUNDAMENTAL OF COMPUTING TECHNOLOGY      3            B+
+6    ENGINEERING DRAWING - I                  3            A
+7    WORKSHOP TECHNOLOGY                      2            A+
+==============================================================================
+Grand Total                                   21           3.67
+Final Grade: B+
+
+Result: Pass
