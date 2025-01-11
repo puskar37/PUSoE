@@ -178,8 +178,8 @@ def calculate_gpa():
 def calculate_final_grade(gpa):
     """Determine the final grade based on GPA using a dictionary."""
     grade_map = {
-        4.0: "A+", 3.75: "A+", 3.50: "A", 3.00: "B+", 2.50: "B",
-        1.75: "C", 1.00: "D", 0.00: "F"
+        4.0: "A+", 3.75: "A", 3.50: "B+", 3.00: "B", 2.50: "C",
+        1.75: "D", 0.00: "F"
     }
     
     for threshold in grade_map:
