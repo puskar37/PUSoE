@@ -191,7 +191,8 @@ def calculate_final_grade(gpa):
 def display_gradesheet(student_name, semester, subject_list, grades, total_credits, gpa, result, final_grade):
     """Display the gradesheet on the console."""
     print("\n\n                          PURBANCHAL UNIVERSITY")
-    print("                    BACHELOR IN COMPUTER ENGINEERING")
+    print("                   Office of The Examination Management")
+    print("                            Biratnagar, Nepal")
     if "Fail" in result:
         print("\n                          Sorry! You have failed.")
     else:
@@ -213,7 +214,8 @@ def save_gradesheet_to_file(student_name, file_name, semester, subject_list, gra
     filename = f"{file_name}_semester_{semester}_result.txt"
     with open(filename, "w") as file:
         file.write("                          PURBANCHAL UNIVERSITY\n")
-        file.write("                    BACHELOR IN COMPUTER ENGINEERING\n")
+        file.write("                   Office of The Examination Management\n")
+        file.write("                            Biratnagar, Nepal\n")
         if "Fail" in result:
             file.write("\n                          Sorry! You have failed.\n")
         else:
