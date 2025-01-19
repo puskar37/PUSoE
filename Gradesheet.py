@@ -108,6 +108,12 @@ def calculate_gpa():
         },      
     }
 
+    semester_in_number = {
+        "1": "FIRST SEMESTER", "2": "SECOND SEMESTER", "3": "THIRD SEMESTER",
+        "4": "FOURTH SEMESTER", "5": "FIFTH SEMESTER", "6": "SIXTH SEMESTER",
+        "7": "SEVENTH SEMESTER", "8": "EIGHTH SEMESTER"
+    }
+
     print("Enter 1 for Computer Engineering or 2 for Civil Engineering.")
     branch_input = input("Enter your choice (1 or 2): ").strip()
     if branch_input == "1":
@@ -122,6 +128,8 @@ def calculate_gpa():
     if semester not in branches[branch]:
         print("Invalid semester entered. Please enter a number between 1 and 8.")
         return
+
+    semester_name = semester_in_number.get(semester)
 
     student_name = input("Enter the name of the student: ").strip().upper()
     file_name = student_name.split()[0].capitalize() if " " in student_name else student_name.capitalize()
@@ -169,10 +177,10 @@ def calculate_gpa():
     final_grade = calculate_final_grade(gpa)
 
     # Display result
-    display_gradesheet(student_name, semester, subject_list, grades, total_credits, gpa, result, final_grade)
+    display_gradesheet(student_name, semester_name, branch, subject_list, grades, total_credits, gpa, result, final_grade)
 
     # Save gradesheet to a file
-    save_gradesheet_to_file(student_name, file_name, semester, subject_list, grades, total_credits, gpa, result, final_grade)
+    save_gradesheet_to_file(student_name, file_name, semester, semester_name, branch, subject_list, grades, total_credits, gpa, result, final_grade)
 
 
 def calculate_final_grade(gpa):
@@ -188,7 +196,7 @@ def calculate_final_grade(gpa):
     return "F"  # Default case for gpa below 1.0
 
 
-def display_gradesheet(student_name, semester, subject_list, grades, total_credits, gpa, result, final_grade):
+def display_gradesheet(student_name, semester_name, branch, subject_list, grades, total_credits, gpa, result, final_grade):
     """Display the gradesheet on the console."""
     print("\n\n                          PURBANCHAL UNIVERSITY")
     print("                   Office of The Examination Management")
@@ -197,8 +205,10 @@ def display_gradesheet(student_name, semester, subject_list, grades, total_credi
         print("\n                          Sorry! You have failed.")
     else:
         print(f"\n                    Congratulations! You have Passed.")
-    print("                             Grade/Mark-Sheet")
-    print(f"Name: {student_name}\n")
+    print("                             Grade/Mark-Sheet\n")
+    print(f"Name: {student_name}")
+    print(f"Year/Semester: {semester_name}")
+    print(f"Result of: BACHELOR IN {branch} ENGINEERING\n")
     print(f"{'S.N':<4} {'Subjects':<40} {'Credit Hour':<12} {'Mark/Grade Obtained'}")
     print("=" * 78)
     for i, (subject, credit) in enumerate(subject_list.items(), 1):
@@ -209,7 +219,7 @@ def display_gradesheet(student_name, semester, subject_list, grades, total_credi
     print(f"Result: {result}\n")
 
 
-def save_gradesheet_to_file(student_name, file_name, semester, subject_list, grades, total_credits, gpa, result, final_grade):
+def save_gradesheet_to_file(student_name, file_name, semester, semester_name, branch, subject_list, grades, total_credits, gpa, result, final_grade):
     """Save the gradesheet to a file."""
     filename = f"{file_name}_semester_{semester}_result.txt"
     with open(filename, "w") as file:
@@ -220,8 +230,10 @@ def save_gradesheet_to_file(student_name, file_name, semester, subject_list, gra
             file.write("\n                          Sorry! You have failed.\n")
         else:
             file.write(f"\n                    Congratulations! You have Passed.\n")
-        file.write("                             Grade/Mark-Sheet\n")
-        file.write(f"Name: {student_name}\n\n")
+        file.write("                             Grade/Mark-Sheet\n\n")
+        file.write(f"Name: {student_name}\n")
+        file.write(f"Year/Semester: {semester_name}\n")
+        file.write(f"Result of: BACHELOR IN {branch} ENGINEERING\n\n")
         file.write(f"{'S.N':<4} {'Subjects':<40} {'Credit Hour':<12} {'Mark/Grade Obtained'}\n")
         file.write("=" * 78 + "\n")
         for i, (subject, credit) in enumerate(subject_list.items(), 1):
