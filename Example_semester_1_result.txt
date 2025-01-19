@@ -4,7 +4,10 @@
 
                     Congratulations! You have Passed.
                              Grade/Mark-Sheet
+
 Name: EXAMPLE
+Year/Semester: FIRST SEMESTER
+Result of: BACHELOR IN Computer ENGINEERING
 
 S.N  Subjects                                 Credit Hour  Mark/Grade Obtained
 ==============================================================================
